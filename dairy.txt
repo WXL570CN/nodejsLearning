@@ -1,0 +1,32 @@
+1、简单的说 Node.js 就是运行在服务端的 JavaScript。运行环境
+
+2、没有DOM和BOM（没有html结构）
+
+3、读写
+    首先需要引入fs（filesystem，文件系统）这个核心模块，其提供了读取文件相关的API
+        var fs = require('fs')
+    读取文件
+        fs.writeFile('文件路径',回调函数)
+        回调函数function(error,data)
+    写文件
+        fs.readFile('文件路径','文件内容',function(error){})
+
+    读取文件目录
+        fs.readdir('目录路径',function(err,files){})
+        files是一个数组
+
+4、构建web服务器
+    引入http模块
+    var http = require('http')
+    创建web服务器
+    var server = http.createServer()
+    回调处理(用户发起请求，会触发require请求事件，然后执行第二个参数)
+    server.on('request',function(request,response){
+        console.log(response.url)
+    })
+    绑定端口号，启动服务器
+    server.listen(端口号,function(){})
+
+5、在每个文件模块中都提供了一个对象export
+
+6、采用无分号风格时需注意，当以( [ ` 开头时，须在前面加;
